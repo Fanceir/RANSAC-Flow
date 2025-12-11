@@ -33,7 +33,8 @@ class CoarseAlign:
         ## resnet 50 
         resnet_feature_layers = ['conv1','bn1','relu','maxpool','layer1','layer2','layer3']
         if imageNet : 
-            resNetfeat = models.resnet50(pretrained=True)          
+            # resNetfeat = models.resnet50(pretrained=True)
+            resNetfeat = models.resnet50(weights=models.ResNet50_Weights.IMAGENET1K_V1)
         else : 
             
             resNetfeat = resnet50()

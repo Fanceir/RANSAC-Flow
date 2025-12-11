@@ -62,7 +62,8 @@ def align2images(args):
     # compute best parameters
     bestPrm, inlierMask = coarseModel.getCoarse(np.zeros((img2h, img2w)))
     bestPrm = torch.from_numpy(bestPrm).unsqueeze(0).cuda()
-    flowCoarse = warper.warp_grid(bestPrm)
+    warper.precompute_warp_grid(bestPrm)
+    flowCoarse = warper._warped_grid
     img1_coarse = F.grid_sample(coarseModel.IsTensor, flowCoarse) #Is: image source.
     img1_coarse_pil = transforms.ToPILImage()(img1_coarse.cpu().squeeze())
 

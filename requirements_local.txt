@@ -1,0 +1,9 @@
+torch
+torchvision
+tqdm
+pandas
+kornia
+opencv-python
+scipy
+jupyterlab
+matplotlib
